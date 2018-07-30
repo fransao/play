@@ -4,12 +4,20 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-resolvers += Resolver.sonatypeRepo("snapshots")
+//resolvers += Resolver.sonatypeRepo("snapshots")
 
-scalaVersion := "2.12.6"
-
-crossScalaVersions := Seq("2.11.12", "2.12.6")
+scalaVersion := "2.11.0"
 
 libraryDependencies += guice
-libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
-libraryDependencies += "com.h2database" % "h2" % "1.4.197"
+libraryDependencies += evolutions
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % Test
+
+libraryDependencies += "com.typesafe.play" %% "play-slick" % "3.0.0"
+libraryDependencies += "com.typesafe.play" %% "play-slick-evolutions" % "3.0.0"
+libraryDependencies += "com.h2database" % "h2" % "1.4.196"
+
+libraryDependencies += ehcache
+libraryDependencies += jcache
+libraryDependencies += "org.jsr107.ri" % "cache-annotations-ri-guice" % "1.0.0"
+
+routesGenerator := InjectedRoutesGenerator
